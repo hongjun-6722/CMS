@@ -1,5 +1,11 @@
 # front-end
 
+### 软件说明
+
+用户增删改查demo
+
+### 使用说明
+
 启动服务器 F:\project\RMS\front-end\service>node app.js
 
 启动前端服务 F:\project\RMS\front-end>npm run serve
@@ -17,3 +23,10 @@
 - 打开front-end文件夹，cmd运行 `npm i`下载依赖的包
 - cmd运行`npm run serve`
 - 打开浏览器访问`http://localhost:8080/#/`
+### 界面
+
+##### 登陆界面
+![loginView](/git_img/loginView.png)
+
+##### 用户控制
+![/userControlView](/git_img/userControlView.png)
