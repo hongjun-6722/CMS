@@ -1,9 +1,5 @@
 <template>
   <div class="sidebar">
-      <!-- <div class="sidebar-ul" ><router-link to="/userControl">用户管理</router-link></div>
-      <div class="sidebar-ul"><router-link to="/powerControl">权限管理</router-link></div>
-      <div class="sidebar-ul"><router-link to="/goodsControl">商品管理</router-link></div>
-      <div class="sidebar-ul"><router-link to="/userControl">数据统计</router-link></div> -->
         <van-sidebar v-model="activeKey">
             <router-link to="/userControl"><van-sidebar-item title="用户管理" /></router-link>
             <router-link to="/powerControl"><van-sidebar-item title="权限管理" /></router-link>
@@ -16,20 +12,19 @@
 import Vue from 'vue';
 import { Sidebar, SidebarItem } from 'vant';
 
-Vue.use(Sidebar);
-Vue.use(SidebarItem);
+Vue.use(Sidebar).use(SidebarItem);
 export default {
     name:"Sideber",
     components: {
-        Sidebar, SidebarItem
+        Sidebar,
+        SidebarItem
     },
     data(){
         return{
-            activeKey: 0,
+            activeKey: 0,//当前视图
         }
     }
 }
-
 </script>
 
 <style scoped lang="less">

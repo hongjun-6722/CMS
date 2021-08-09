@@ -2,15 +2,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 
-
-// Vue.use(VueRouter)
-
-
 Vue.use(Router)
 
 const router = new Router({
   routes: [
     {
+      //主页
       path: '/',
       name: 'home',
       component: Home,
@@ -19,35 +16,29 @@ const router = new Router({
        }
     },
     {
+      //用户主页
       path: '/userControl',
       name: 'userControl',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/userControl.vue'),
+      component: () => import('./views/userControl.vue'),
       meta:{
         needLogin: true
       }
     },{
+      //商品列表 未使用
       path: '/goodsControl',
       name: 'goodsControl',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/goodsControl.vue')
+      component: () => import('./views/goodsControl.vue')
     },{
+      //权限列表 未使用
       path: '/powerControl',
       name: 'powerControl',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/powerControl.vue')
+      component: () => import('./views/powerControl.vue')
     }
   ]
 });
 router.beforeEach(
   (to, from, next)=>{
-    //路由中设置的needLogin字段就在to当中 
+    //needLogin在to当中 
     if(window.sessionStorage.data){
       // console.log(window.sessionStorage);
       // console.log(to.path) //每次跳转的路径

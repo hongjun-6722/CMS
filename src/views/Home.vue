@@ -6,27 +6,26 @@
           <van-field v-model="pwd" type="password" label="密码" autocomplete='new-password'/>
           <van-button type="primary" v-on:click="login()">登陆</van-button>
         </form>
-
       </div>
       <!-- 背景图片 -->
       <vue-particles
-      color="#fff"
-      :particleOpacity="0.7"
-      :particlesNumber="60"
-      shapeType="circle"
-      :particleSize="4"
-      linesColor="#fff"
-      :linesWidth="1"
-      :lineLinked="true"
-      :lineOpacity="0.4"
-      :linesDistance="150"
-      :moveSpeed="2"
-      :hoverEffect="true"
-      hoverMode="grab"
-      :clickEffect="true"
-      clickMode="push"
-      class="lizi"
-    >
+        color="#fff"
+        :particleOpacity="0.7"
+        :particlesNumber="60"
+        shapeType="circle"
+        :particleSize="4"
+        linesColor="#fff"
+        :linesWidth="1"
+        :lineLinked="true"
+        :lineOpacity="0.4"
+        :linesDistance="150"
+        :moveSpeed="2"
+        :hoverEffect="true"
+        hoverMode="grab"
+        :clickEffect="true"
+        clickMode="push"
+        class="lizi"
+      >
     </vue-particles>
   </div>
 </template>
@@ -37,16 +36,12 @@ import Vue from 'vue';
 import { PasswordInput,Field,Button } from 'vant';
 import Axios from 'axios';
 
-Vue.use(Button);
-Vue.use(Field);
-Vue.use(PasswordInput);
-// @ is an alias to /src
+Vue.use(Button).use(Field).use(PasswordInput);
 // import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'home',
   components: {
-
   },
   data() {
       return {
@@ -58,14 +53,12 @@ export default {
   methods: {
     //登陆
     login(){
-      // console.log(1)
       instance.post('/user', {
       user: this.user,
       pwd:this.pwd,
       })
       // .then(function (response) {
       // console.log(response);
-      // console.log(1)
       // console.log(response.data.data)
       // this.stu = response.data.data
       // })
@@ -80,12 +73,11 @@ export default {
       })
       .catch(function (error) {
       console.log(error);
-            // console.log(1)
       });
     }
   },
   created() {
-    //键盘监听
+    //键盘监听回车
     var lett = this;
     document.onkeydown = function(e) {
     var key = window.event.keyCode;

@@ -2,7 +2,7 @@
   <div class="topbar">
       <span class="topbar-word">
             <van-icon name="chat-o" size="40" />
-            电商后台管理系统
+            用户后台管理系统
             <van-button plain type="info" size='mini' v-on:click="loginOut() ">注销</van-button>
       </span>
   </div>
@@ -19,14 +19,12 @@ export default {
         this.$router.push('/'); 
         }
     }
-
 }
 import Vue from 'vue';
 import { Icon } from 'vant'
 import { Button } from 'vant';
 
-Vue.use(Button);
-Vue.use(Icon);
+Vue.use(Button).use(Icon);
 </script>
 
 <style scoped lang="less">
@@ -36,11 +34,6 @@ Vue.use(Icon);
     width: 100%;
     font-size: 20px;
     position: relative;
-    // span{
-    //     height: 100%;
-    //     width: 40px;
-    //     background-color: rgb(187, 103, 103);
-    // }
     i{
         position: absolute;
         left: -40px
@@ -51,10 +44,7 @@ Vue.use(Icon);
         margin: auto;
         left: 20%;
         position: absolute;
-        // top: 0px;
-        // left: 35%;
         button{
-            
             top: -3px;
         }
     }

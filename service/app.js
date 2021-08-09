@@ -1,7 +1,6 @@
 //服务器配置
 const Router = require('koa-router')
 const router = new Router()
-
 const Koa = require('koa2')
 const app = new Koa() // 创建koa2实例
 
@@ -12,7 +11,7 @@ const apirouter = require('./router/index.js')
 app.use(router.routes()).use(router.allowedMethods())
 app.use(apirouter.routes())
 
-//任何请求app都将用此方法处理
+//默认方法
 app.use(async (ctx) => {
     ctx.body = 'hello koa2'
     console.log('ko2')

@@ -7,7 +7,6 @@
 
 <script>
 import { Button } from 'vant';
-// @ is an alias to /src
 export default {
   name: 'powerControl',
   components: {

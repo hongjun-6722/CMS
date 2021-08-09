@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import Sidebar from '@/components/Sidebar.vue'
-import Topbar from '@/components/Topbar.vue'
+import Sidebar from '@/components/Sidebar.vue'//侧边栏
+import Topbar from '@/components/Topbar.vue'//顶部导航
 export default {
   name: 'App',
   components: {
@@ -27,30 +27,27 @@ export default {
     }
   },
   mounted(){
-//挂载浏览器高度获取方法
+  //浏览器高度事件注册
     const that =this
     window.onresize = () => {
       return (() => {
-      that.winHeight = window.innerHeight
-          })()
+        that.winHeight = window.innerHeight
+      })()
     }
     this.$refs.app.style.height=this.winHeight+'px'
   },
   watch:{
-  //监控浏览器高度变化
-    winHeight(val){
-  this.winHeight =val
-  this.$refs.app.style.height=this.winHeight+'px'
+  //浏览器高度
+  winHeight(val){
+    this.winHeight =val
+    this.$refs.app.style.height=this.winHeight+'px'
     }
-
   }
 }
-
 </script>
 
 
 <style lang="less">
-
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -58,7 +55,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   background-color: rgb(250, 250, 250);
-  // height:winHeight;
 }
 #nav {
   padding: 30px;

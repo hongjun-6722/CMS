@@ -4,7 +4,6 @@ let http = axios.create({
     withCredentials: true,
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
-      // 'params':'1'
     },
     transformRequest: [function (data) {
       let newData = '';

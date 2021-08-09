@@ -1,5 +1,4 @@
 const mysql = require('mysql')
-
 const init = require('../database/init')
 // 创建连接池
 const pool = mysql.createPool({

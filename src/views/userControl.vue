@@ -61,21 +61,16 @@ import { Button } from 'vant';//按钮
 import { Col, Row,Pagination } from 'vant';//行列,分页
 import { Popup,Search } from 'vant';//弹窗，搜索
 
-Vue.use(Search);
-Vue.use(Popup);
-Vue.use(Col);
-Vue.use(Row);
-Vue.use(Pagination);
-Vue.use(Cell);
-Vue.use(CellGroup);
-// @ is an alias to /src
+Vue.use(Search).use(Popup);
+Vue.use(Col).use(Row);
+Vue.use(Pagination).use(Cell).use(CellGroup);
 export default {
   name: 'userControl',
   components: {
   },
   data () {
 	  return {
-      name_query:'',
+      name_query:'',//查询
       age_value: '',//年龄
       name_value:'',//名字
       qq_value:'',//QQ
