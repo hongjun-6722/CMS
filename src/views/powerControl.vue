@@ -6,11 +6,9 @@
 </template>
 
 <script>
-import { Button } from 'vant';
 export default {
   name: 'powerControl',
   components: {
-    Button
   }
 }
 </script>

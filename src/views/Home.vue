@@ -1,10 +1,14 @@
 <template>
     <div class="login">
       <div class="main">
-        <form>
-          <van-field v-model="user" type="digit" label="用户名" autocomplete='username'/>
+        <form class="login-form">
+          <van-field v-model="user" type="text" label="用户名" autocomplete='username'/>
           <van-field v-model="pwd" type="password" label="密码" autocomplete='new-password'/>
-          <van-button type="primary" v-on:click="login()">登陆</van-button>
+          <p class="forget">忘记密码>></p>
+          <div class="login-button">
+            <van-button class="login-button-item" type="primary" @click="register()">注册</van-button>
+            <van-button class="login-button-item" type="primary" @click="login()">登陆</van-button>
+          </div>
         </form>
       </div>
       <!-- 背景图片 -->
@@ -31,14 +35,6 @@
 </template>
 
 <script>
-import Vue from 'vue';
-//密码框，输入栏，按钮
-import { PasswordInput,Field,Button } from 'vant';
-import Axios from 'axios';
-
-Vue.use(Button).use(Field).use(PasswordInput);
-// import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
   name: 'home',
   components: {
@@ -48,26 +44,19 @@ export default {
         showKeyboard: true,
         user:'',
         pwd:'',
+        instance:'',
       };
   },
   methods: {
     //登陆
     login(){
-      instance.post('/user', {
+      this.instance.post('/user', {
       user: this.user,
       pwd:this.pwd,
       })
-      // .then(function (response) {
-      // console.log(response);
-      // console.log(response.data.data)
-      // this.stu = response.data.data
-      // })
       .then((response)=>{
-        // window.console.log(response.data.data);
-        // window.console.log(response);
-        // window.console.log(response.data.status);
         if(response.data.status=131){
-          window.sessionStorage.setItem('data',131);
+          this.setSessionItem("data","online")
           this.$router.push('/userControl');
         }
       })
@@ -85,46 +74,51 @@ export default {
         lett.login();
       }
     }
+    this.instance = this.$axios.create({
+      baseURL: '/api',
+      timeout: 1000,
+      headers: {'X-Custom-Header': 'foobar'},
+    });
   },
 }
 //axios实例
-var instance = Axios.create({
-  baseURL: '/api',
-  timeout: 1000,
-  headers: {'X-Custom-Header': 'foobar'},
-});
 </script>
+
 <style lang="less">
-@media screen and (min-width:900px){
-  .main{
-    width: 40%;
-    margin: auto;
-  }
-}
 .login {
   background-image: linear-gradient(-180deg, #1a1454 0%, #0e81a5 100%);
-  /*background-image: url("../images/bg_login.png");*/
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100%;
   width: 100%;
   .main{
-    top: 15%;
+    max-width: 600px;
+    margin: auto;
     padding: 10%;
-    z-index: 50;
     position: relative;
+    top: 15%;
+    z-index: 50;
     .van-field__label{
-      width: 45px;
+      width: 3.2em;
     }
-    button{
+    .login-button{
+      margin: auto;
       margin-top: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      .login-button-item{
+        flex-basis: 40%;
+        max-width: 200px;
+      }
+    }
+    .forget{
+      text-align: right;
+      padding-right: 10px;
+      color: #fff;
     }
   }
   .lizi{
-      height:100%;
-      position: absolute;
-      top: 0;
-      
+    height:100%;
+    position: absolute;
+    top: 0; 
   }
 }
 </style>

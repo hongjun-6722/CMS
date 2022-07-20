@@ -11,7 +11,7 @@ const apirouter = require('./router/index.js')
 app.use(router.routes()).use(router.allowedMethods())
 app.use(apirouter.routes())
 
-//默认方法
+
 app.use(async (ctx) => {
     ctx.body = 'hello koa2'
     console.log('ko2')

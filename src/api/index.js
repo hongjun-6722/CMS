@@ -29,17 +29,17 @@ let http = axios.create({
     })
   }
   
-  export default {
-    get: function (url, params, response) {
-      return apiAxios('GET', url, params, response)
-    },
-    post: function (url, params, response) {
-      return apiAxios('POST', url, params, response)
-    },
-    put: function (url, params, response) {
-      return apiAxios('PUT', url, params, response)
-    },
-    delete: function (url, params, response) {
-      return apiAxios('DELETE', url, params, response)
-    }
+export default {
+  get: function (url, params, response) {
+    return apiAxios('GET', url, params, response)
+  },
+  post: function (url, params, response) {
+    return apiAxios('POST', url, params, response)
+  },
+  put: function (url, params, response) {
+    return apiAxios('PUT', url, params, response)
+  },
+  delete: function (url, params, response) {
+    return apiAxios('DELETE', url, params, response)
   }
+}

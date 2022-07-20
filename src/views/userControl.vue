@@ -30,7 +30,7 @@
         <van-col span="6">QQ</van-col>
         <van-col span="9">功能</van-col>
       </van-row>
-      <van-row type="flex"   v-for="(user,index) in stu.slice(currentline,current)" v-bind:key="user.id">
+      <van-row type="flex" v-for="(user,index) in stu.slice(currentline,current)" v-bind:key="user.id">
         <van-col span="3">{{currentline+index+1}}</van-col>
         <van-col span="3">{{user.name}}</van-col>
         <van-col span="3">{{user.age}}</van-col>
@@ -40,12 +40,12 @@
           <van-button type="primary" size='20'  @click.self="showPopup_change(),change_id=user.id" >
             修改
             <van-popup v-model="show_change">
-            <van-field  v-model="name_value"  placeholder="名字" />  
-            <van-field  v-model="age_value"  placeholder="年龄" />
-            <van-field  v-model="qq_value"  placeholder="QQ" />
-            <van-button class="show_btn" type="primary" @click.stop="clear(),show_change=!show_change" >取消</van-button>
-            <van-button class="show_btn" type="primary" @click.stop="change(change_id),query(),show_change=!show_change" >修改</van-button>            
-          </van-popup>
+              <van-field  v-model="name_value"  placeholder="名字" />  
+              <van-field  v-model="age_value"  placeholder="年龄" />
+              <van-field  v-model="qq_value"  placeholder="QQ" />
+              <van-button class="show_btn" type="primary" @click.stop="clear(),show_change=!show_change" >取消</van-button>
+              <van-button class="show_btn" type="primary" @click.stop="change(change_id),query(),show_change=!show_change" >修改</van-button>            
+            </van-popup>
           </van-button>
         </van-col>
       </van-row>
@@ -53,18 +53,11 @@
     </div>
   </div>
 </template>
-<script>
-import Vue from 'vue';
-import Api from '../api/index.js';
-import { Cell,CellGroup,Field } from 'vant';//单元格，输入栏
-import { Button } from 'vant';//按钮
-import { Col, Row,Pagination } from 'vant';//行列,分页
-import { Popup,Search } from 'vant';//弹窗，搜索
 
-Vue.use(Search).use(Popup);
-Vue.use(Col).use(Row);
-Vue.use(Pagination).use(Cell).use(CellGroup);
+<script>
+
 export default {
+
   name: 'userControl',
   components: {
   },
@@ -122,7 +115,7 @@ export default {
     },
     //查询
     query(){
-       Api.get('getdata',{name:this.name_query}, response => {
+       this.$Api.get('getdata',{name:this.name_query}, response => {
      if (response.status >= 200 && response.status < 300) {
         // console.log(response);
         this.stu = response.data.data
@@ -135,7 +128,7 @@ export default {
     },
     //添加
     add(){
-       Api.get('add',{age:this.age_value,name:this.name_value,qq:this.qq_value}, response => {
+       this.$Api.get('add',{age:this.age_value,name:this.name_value,qq:this.qq_value}, response => {
      if (response.status >= 200 && response.status < 300) {
         // console.log(response);
         // this.stu = response.data.data
@@ -151,7 +144,7 @@ export default {
     },
     //删除
     del(del_id){
-      Api.get('del',{del:del_id}, response => {
+      this.$Api.get('del',{del:del_id}, response => {
      if (response.status >= 200 && response.status < 300) {
         // console.log(response);
         // this.stu = response.data.data
@@ -165,7 +158,7 @@ export default {
       });
     },
     change(change_id){
-      Api.get('change',{change:change_id,age:this.age_value,name:this.name_value,qq:this.qq_value}, response => {
+      this.$Api.get('change',{change:change_id,age:this.age_value,name:this.name_value,qq:this.qq_value}, response => {
      if (response.status >= 200 && response.status < 300) {
         // console.log(response);
         // this.stu = response.data.data
@@ -182,16 +175,16 @@ export default {
   //页面打开
   created(){
     //查询全部
-        this.$options.methods.query.bind(this)()  
+    this.$options.methods.query.bind(this)()
   }
 }
-
 </script>
 <style lang="less">
 
 .user{
-  width: 70%;
-  margin: 0 auto;
+  width: 100%;
+  padding: 0 2%;
+  text-align: center;
   .van-col{
     border:solid 1px;
     border-color: powderblue;
