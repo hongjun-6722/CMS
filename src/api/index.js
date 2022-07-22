@@ -1,5 +1,5 @@
 import axios from 'axios'
-let http = axios.create({
+  let http = axios.create({
     baseURL: '/api',
     withCredentials: true,
     headers: {
@@ -41,5 +41,5 @@ export default {
   },
   delete: function (url, params, response) {
     return apiAxios('DELETE', url, params, response)
-  }
+  },
 }

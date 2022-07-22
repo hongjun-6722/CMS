@@ -21,26 +21,24 @@ export default {
   },
   data(){
     return{
-      winHeight:window.innerHeight,
+      winHeight:window.innerHeight,//浏览器高度
       loggingStatus:'' ,
     }
   },
-  // mounted(){
-  //浏览器高度事件注册
-    // const that =this
-    // window.onresize = () => {
-    //   return (() => {
-    //     that.winHeight = window.innerHeight
-    //   })()
-    // }
-    // this.$refs.app.style.height=this.winHeight+'px'
-  // },
+  created(){
+    this.$store.commit('change_winHeight',this.winHeight)
+  },
+  mounted(){
+  浏览器高度事件注册
+    const that = this
+    window.onresize = () => {
+      return (() => {
+        that.winHeight = window.innerHeight
+        this.$store.commit('change_winHeight',this.winHeight)
+      })()
+    }
+  },
   watch:{
-  //浏览器高度
-  // winHeight(val){
-  //   this.winHeight =val
-  //   this.$refs.app.style.height=this.winHeight+'px'
-  //   }
   },
   mounted() {
     this.loggingStatus = sessionStorage.getItem("data")
@@ -57,9 +55,9 @@ export default {
 
 <style lang="less">
 html,body{
-  height: 100%;
-  width: 100%;
   font-size: 14px;
+  margin: 0;
+  padding: 0;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

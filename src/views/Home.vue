@@ -50,7 +50,11 @@ export default {
   methods: {
     //登陆
     login(){
-      this.instance.post('/user', {
+      this.$axios.create({
+      baseURL: '/api',
+      timeout: 1000,
+      headers: {'X-Custom-Header': 'foobar'},
+    }).post('/user', {
       user: this.user,
       pwd:this.pwd,
       })
@@ -74,14 +78,8 @@ export default {
         lett.login();
       }
     }
-    this.instance = this.$axios.create({
-      baseURL: '/api',
-      timeout: 1000,
-      headers: {'X-Custom-Header': 'foobar'},
-    });
   },
 }
-//axios实例
 </script>
 
 <style lang="less">
@@ -89,7 +87,7 @@ export default {
   background-image: linear-gradient(-180deg, #1a1454 0%, #0e81a5 100%);
   width: 100%;
   .main{
-    max-width: 600px;
+    max-width: 400px;
     margin: auto;
     padding: 10%;
     position: relative;
@@ -97,6 +95,7 @@ export default {
     z-index: 50;
     .van-field__label{
       width: 3.2em;
+      user-select: none;
     }
     .login-button{
       margin: auto;
@@ -104,6 +103,7 @@ export default {
       width: 100%;
       display: flex;
       justify-content: space-around;
+      user-select: none;
       .login-button-item{
         flex-basis: 40%;
         max-width: 200px;
@@ -113,10 +113,12 @@ export default {
       text-align: right;
       padding-right: 10px;
       color: #fff;
+      user-select: none;
+      cursor: pointer;
     }
   }
   .lizi{
-    height:100%;
+    height:calc(100% - 4px);
     position: absolute;
     top: 0; 
   }
